@@ -148,8 +148,8 @@ int main(int argc, char *argv[])
 
         //print date at correct location
         printf("\e[H");              //go to top left corner
-        printf("\e[7B");             //go to line 7
-        printf("\e[22C");            //go to col 22
+        printf("\e[7B");             //go down 7 lines
+        printf("\e[22C");            //go right 22 cols
         setTextColor(selectedColor); //set the color
         printDate();                 //print the date
 
