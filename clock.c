@@ -91,7 +91,7 @@ int main(int argc, char *argv[])
     }
 
     //enable alternative buffer, this will look like a new window (have to close this when the program exits)
-    printf("\033[?1049h");
+    printf("\e[?1049h");
     // hide cursor (needs to be made visible when program ends) - https://stackoverflow.com/questions/30126490/how-to-hide-console-cursor-in-c
     printf("\e[?25l");
 
@@ -147,9 +147,9 @@ int main(int argc, char *argv[])
         printNumber(selectedColor, sixthDigit);
 
         //print date at correct location
-        printf("\033[H");            //go to top left corner
-        printf("\033[7B");           //go to line 7
-        printf("\033[22C");          //go to col 22
+        printf("\e[H");              //go to top left corner
+        printf("\e[7B");             //go to line 7
+        printf("\e[22C");            //go to col 22
         setTextColor(selectedColor); //set the color
         printDate();                 //print the date
 
@@ -269,8 +269,8 @@ void printDate()
 //Make cursor visible
 void closeProgram(int dummy)
 {
-    printf("\033[?1049l"); //disable alternative buffer
-    printf("\033[?25h");   //make cursor visible
+    printf("\e[?1049l"); //disable alternative buffer
+    printf("\e[?25h");   //make cursor visible
     resetBackgroundColor();
     resetTextColor();
     exit(0);
@@ -281,14 +281,14 @@ void setTextColor(int color)
     // set text color for printing the date
 
     // this is called foreground color officially
-    char BLACK[] = "\033[30m";
-    char RED[] = "\033[31m";
-    char GREEN[] = "\033[32m";
-    char YELLOW[] = "\033[33m";
-    char BLUE[] = "\033[34m";
-    char MAGENTA[] = "\033[35m";
-    char CYAN[] = "\033[36m";
-    char WHITE[] = "\033[37m";
+    char BLACK[] = "\e[30m";
+    char RED[] = "\e[31m";
+    char GREEN[] = "\e[32m";
+    char YELLOW[] = "\e[33m";
+    char BLUE[] = "\e[34m";
+    char MAGENTA[] = "\e[35m";
+    char CYAN[] = "\e[36m";
+    char WHITE[] = "\e[37m";
 
     switch (color)
     {
@@ -323,14 +323,14 @@ void setBackgroundColor(int color)
 {
     //set background color for printing spaces
 
-    char BLACK[] = "\033[40m";
-    char RED[] = "\033[41m";
-    char GREEN[] = "\033[42m";
-    char YELLOW[] = "\033[43m";
-    char BLUE[] = "\033[44m";
-    char MAGENTA[] = "\033[45m";
-    char CYAN[] = "\033[46m";
-    char WHITE[] = "\033[47m";
+    char BLACK[] = "\e[40m";
+    char RED[] = "\e[41m";
+    char GREEN[] = "\e[42m";
+    char YELLOW[] = "\e[43m";
+    char BLUE[] = "\e[44m";
+    char MAGENTA[] = "\e[45m";
+    char CYAN[] = "\e[46m";
+    char WHITE[] = "\e[47m";
 
     switch (color)
     {
@@ -364,14 +364,14 @@ void setBackgroundColor(int color)
 void resetTextColor()
 {
     //reset color to white as thats used in the original program
-    char WHITE[] = "\033[37m";
+    char WHITE[] = "\e[37m";
     printf("%s", WHITE);
 }
 
 void resetBackgroundColor()
 {
     //reset color
-    char RESET[] = "\033[0m";
+    char RESET[] = "\e[0m";
     printf("%s", RESET);
 }
 
@@ -481,16 +481,16 @@ void moveToNextLineOfNumber()
 {
     //move one line down
     //then move 6 cols to the left
-    printf("\033[1B"); //1 down
-    printf("\033[6D"); //6 left
+    printf("\e[1B"); //1 down
+    printf("\e[6D"); //6 left
 }
 
 void moveCursorToDigit(int number)
 {
     //move the cursor to correct position before printing the big number
-    printf("\033[H");  // move cursor to start
-    printf("\033[1B"); //go to line 1
-    printf("\033[");   //go to correct col
+    printf("\e[H");  // move cursor to start
+    printf("\e[1B"); //go to line 1
+    printf("\e[");   //go to correct col
 
     //numbers dont have much of a pattern because of the colon only having 6 spaces for it
     //all the other numbers have 7 spaces
