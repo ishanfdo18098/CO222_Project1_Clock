@@ -17,6 +17,11 @@ Command-line arguments:
 should be able to print the clock using the given colour. If no argument is given, use
 black and white as default.
 
+![image](https://user-images.githubusercontent.com/73381996/130306703-2f5ba104-cb0d-493a-830b-713f7cc28da9.png)
+
+![image](https://user-images.githubusercontent.com/73381996/130306705-ac47b02b-2d72-4bdf-b859-89ac56c0627e.png)
+
+
 ● These colors should be supported by the program - black, red, green, yellow, blue,
 magenta, cyan
 
