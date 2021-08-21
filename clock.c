@@ -2,6 +2,8 @@
 CO222 - Clock
 
 Project 1
+Github - https://github.com/ishanfdo18098/CO222_Project1_Clock.git
+Will be made public after the deadline
 
 References,
 https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html
