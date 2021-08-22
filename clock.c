@@ -63,7 +63,7 @@ int main(int argc, char *argv[])
     char optionEntered;
     // stop "./a.out: invalid option -- 'arg'" from printing
     opterr = 0;
-    while ((optionEntered = getopt(argc, argv, "c:h:")) != -1) // while there are arguments left
+    while ((optionEntered = getopt(argc, argv, "c:h")) != -1) // while there are arguments left
     {
         switch (optionEntered)
         {
@@ -71,7 +71,6 @@ int main(int argc, char *argv[])
             printUsage();
             printSupportedColors();
             exit(0);
-            break;
         case 'c': //if -c is entered
             // convert optarg string to lowercase
             stringToLowercase(optarg);
