@@ -19,6 +19,7 @@ Author : Fernando K.A. Ishan - E/18/098
 #include <signal.h> //to catch CTRL+C
 #include <getopt.h> //to argument parse
 #include <ctype.h>  // tolower()
+#include <stdlib.h> // to system();
 
 void getTime();                                  // get time as a string in format HH:MM:SS
 void printUsage();                               // print help usage
@@ -94,6 +95,10 @@ int main(int argc, char *argv[])
     printf("\e[?1049h");
     // hide cursor (needs to be made visible when program ends) - https://stackoverflow.com/questions/30126490/how-to-hide-console-cursor-in-c
     printf("\e[?25l");
+    // disable echo in terminal - to make the input from user invisible
+    // https://stackoverflow.com/questions/4316730/hiding-user-input-on-terminal-in-linux-script
+    // https://stackoverflow.com/questions/19209141/how-do-i-execute-a-shell-built-in-command-with-a-c-function
+    system("stty -echo");
 
     // keep changing the text in a loop
     while (1)
@@ -271,6 +276,7 @@ void closeProgram(int dummy)
 {
     printf("\e[?1049l"); //disable alternative buffer
     printf("\e[?25h");   //make cursor visible
+    system("stty echo"); //enable echo in terminal
     resetBackgroundColor();
     resetTextColor();
     exit(0);
