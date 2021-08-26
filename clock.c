@@ -33,7 +33,7 @@ void moveToNextLineOfNumber();                   // move cursor to the next line
 void moveCursorToDigit(int number);              // move cursor to the correct position for printing
 void printNumber(int selectedColor, int number); // print a big number in selectedColor
 void printColon(int selectedColor);              // print a colon : in selected color
-void helpText(char str[]);                       // print the -h text
+void helpText();                                 // print the -h text
 void resetBackgroundColor();                     // reset background color
 void stringToLowercase(char array[]);            // convert string to lowercase
 int parseColorOption(char color[]);              // check for valid input colors
@@ -68,8 +68,7 @@ int main(int argc, char *argv[])
         switch (optionEntered)
         {
         case 'h': // if -h is entered
-            printUsage();
-            printSupportedColors();
+            helpText();
             exit(0);
         case 'c': //if -c is entered
             // convert optarg string to lowercase
@@ -175,7 +174,7 @@ void getTime(char timeString[])
     sprintf(timeString, "%02d:%02d:%02d\n", timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec);
 }
 
-void helpText(char str[])
+void helpText()
 {
     // print the help text when -h is given
     printUsage();
