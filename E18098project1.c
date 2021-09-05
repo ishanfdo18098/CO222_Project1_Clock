@@ -63,7 +63,7 @@ int main(int argc, char *argv[])
     char optionEntered;
     // stop "./a.out: invalid option -- 'arg'" from printing
     opterr = 0;
-    while ((optionEntered = getopt(argc, argv, "c:h")) != -1) // while there are arguments left
+    while ((optionEntered = getopt(argc, argv, "hc:")) != -1) // while there are arguments left
     {
         switch (optionEntered)
         {
@@ -71,6 +71,12 @@ int main(int argc, char *argv[])
             helpText();
             exit(0);
         case 'c': //if -c is entered
+            //skip multiple -c entered ( -c -c -c red )
+            if (strcmp(optarg, "-c") == 0)
+            {
+                continue;
+            }
+
             // convert optarg string to lowercase
             stringToLowercase(optarg);
             // parse the color
@@ -157,7 +163,7 @@ int main(int argc, char *argv[])
         printDate();                 // print the date
 
         // sleep for some time
-        usleep(1000 * 300); // sleep in micro seconds
+        usleep(1000); // sleep in micro seconds
     }
     return 0;
 }
